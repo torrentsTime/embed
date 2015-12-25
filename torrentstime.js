@@ -167,8 +167,8 @@
 				img.onload = function(){
 					callback();
 				};
-				imgs[i].onerror = function(){setTimeout(function(){handler(callback)},800)};
-				imgs[i].src="https://" + TT.setup.localhost_domain + ":" + TT.setup.port + "/check_complete?stage=" + stage + "&cb=" + Math.random();
+				img.onerror = function(){setTimeout(function(){handler(callback)},800)};
+				img.src="https://" + TT.setup.localhost_domain + ":" + TT.setup.port + "/check_complete?stage=" + stage + "&cb=" + Math.random();
 			}
 
 			handler(TT.init)
@@ -321,7 +321,7 @@
 				"padding-top": "25%"
 			},
 			"._tt_wrapper ._tt_ins_prgrsbar":{
-				width: "85%",
+				width: "80%",
 				height: "10px",
 				background: "#fff",
 				"border-radius": "3px",

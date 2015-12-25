@@ -310,7 +310,7 @@
 			},
 			"._tt_wrapper._tt_setupDownload.installing ._tt_installing":{
 				display: "block",
-				animation: 	"fadeInOut 2s ease-out infinite"
+				animation: 	"fadeInOut 0.4s ease-out 3"
 			},
 			"._tt_wrapper ._tt_installing":{
 				display: "none",
@@ -337,7 +337,7 @@
 				top:"1px",
 				height: "8px",
 				width: "20px",
-				animation: 	"sprinter 1s ease-out 3"
+				animation: 	"sprinter 1s ease-out infinite"
 			},
 			"._tt_initScreen ._tt_caption":{
 				width: 			"100%",

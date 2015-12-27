@@ -139,8 +139,6 @@
 				TT.setup.port			= this.getAttribute('data-port');
 				callback(true);
 				clearTimeout(timer);
-				if(counter && TT.setup.browser=='firefox') navigator.plugins.refresh(true);
-
 			};
 			imgs[i].onerror = function(){ utils.log(this) };
 			imgs[i].setAttribute("data-port", ports[i]);
@@ -165,6 +163,7 @@
 			var handler = function(callback){
 				var img = new Image();
 				img.onload = function(){
+					if(TT.setup.browser=='firefox') navigator.plugins.refresh();
 					callback();
 				};
 				img.onerror = function(){setTimeout(function(){handler(callback)},800)};

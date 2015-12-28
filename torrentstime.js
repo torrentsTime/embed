@@ -673,10 +673,13 @@
 			var initScreen = this.wrapper.querySelector('._tt_initScreen');
 			if(initScreen) initScreen.parentNode.removeChild(initScreen);
 
-			if(this.setup.poster.length){
-				this.wrapper.firstChild.style.background='#000 url('+this.setup.poster[0]+') no-repeat center center';
-				this.wrapper.firstChild.style.backgroundSize='cover';
-			}
+			var instance = this;
+			setTimeout(function(){
+				if(instance.setup.poster && instance.setup.poster.length){
+					instance.wrapper.firstChild.style.background='#000 url('+this.setup.poster[0]+') no-repeat center center';
+					instance.wrapper.firstChild.style.backgroundSize='cover';
+				}
+			},500)
 
 			if(this.isReady){
 				for(var func in this.beforeStart)

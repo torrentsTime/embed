@@ -399,6 +399,13 @@
 				display:	"none"
 
 			},
+			"._tt_pleaseWait_box":{
+				padding: "15px",
+				margin: "0 auto",
+				background: "rgba(0,0,0,0.9)",
+				"border-radius":"5px",
+				width: "80%"
+			},
 			"._tt_pleaseWait ._tt_s1":{
 				"font-size": 		"16px",
 				"margin-bottom":	"15px;"
@@ -424,7 +431,7 @@
 			},
 			"._tt_wrapper.init ._tt_pleaseWait":{
 				display:	"inline",
-				animation: 	"fadeInOut 2s ease-out infinite"
+				animation: 	"fadeInOut 2s linear infinite"
 
 			},
 			"@keyframes fadeInOut{0%{opacity: 1} 50%{opacity:0} 100%{opacity:1}} ._tt_null": {},
@@ -594,7 +601,7 @@
 				name: "div",
 				props:{
 					className: "_tt_pleaseWait",
-					innerHTML: '<div class="_tt_s1">' + instance.setup.title + '</div><div class="_tt_s2">DOWNLOADING</div>'
+					innerHTML: '<div class="_tt_pleaseWait_box"><div class="_tt_s1">' + instance.setup.title + '</div><div class="_tt_s2">DOWNLOADING</div></div>'
 				}
 			}, instance.wrapper.firstChild);
 
@@ -603,7 +610,7 @@
 				utils.addListener(instance.plugin.object, "progress", function(event){
 					if (event.lengthComputable && event.total > 0) {
 						var loadPercentString = (Math.floor(event.loaded / event.total * 100.0)-1) + '%';
-						prepareScreen.innerHTML = '<div class="_tt_s1">Installing...</div><div class="_tt_progress"><div class="_tt_bar" style="width:' + loadPercentString + '"></div></div>'
+						prepareScreen.innerHTML = '<div class="_tt_pleaseWait_box"><div class="_tt_s1">Preparing to stream Torrent...</div><div class="_tt_progress"><div class="_tt_bar" style="width:' + loadPercentString + '"></div></div></div>'
 					}
 				});
 			}
@@ -665,6 +672,11 @@
 			this.wrapper.firstChild.className += ' init';
 			var initScreen = this.wrapper.querySelector('._tt_initScreen');
 			if(initScreen) initScreen.parentNode.removeChild(initScreen);
+
+			if(this.setup.poster.length){
+				this.wrapper.firstChild.style.background='#000 url('+this.setup.poster[0]+') no-repeat center center';
+				this.wrapper.firstChild.style.backgroundSize='cover';
+			}
 
 			if(this.isReady){
 				for(var func in this.beforeStart)
